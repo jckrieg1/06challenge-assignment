@@ -10,8 +10,13 @@ var forecastIcon = [];
 var forecastDate = [];
 var searchBtn = document.getElementById("btn");
 var inputText = document.getElementById("input-field");
-var apiKey = "f30dc0b71f772a037a522282770190be";
+var apiKey = "2af87cb904809765cbfcdd3689556288";
 var apiUrl = "";
+var savedCities = [];
+var leftCol = document.getElementById('weather-dashboard');
+
+
+cityHistory();
 function apiCall() {
 fetch(apiUrl)
   .then(function (response) {
@@ -22,13 +27,12 @@ fetch(apiUrl)
     console.log(data);
     
     // extract the data from your data obj
+    let day1Temp = data.main.temp;
+    let day1Humidity = data.main.humidity;
 
-    let day1Temp = data.list[0].main.temp;
-    let day1Humidity = data.list[0].main.humidity;
+    let day2Temp = data.main.temp;
 
-    let day2Temp = data.list[8].main.temp;
-
-    data.list.forEach(function (tsObj) {
+    data.forEach(function (tsObj) {
 
       // Makes a moment date object for each record
       const dateObj = moment.unix(tsObj.dt)
@@ -59,24 +63,37 @@ for (var i = 0; i < weatherDays.length; i++) {
 }
 }
 
-
-
 // Gets the text input for the city:
 function getCity() {
   city = inputText.value;
+  savedCities.push(city);
+  localStorage.setItem('storedCity', savedCities);
 };
 
+
+function cityHistory() {
+  for(i=0; i<savedCities.length; i++) {
+  var newCityBtn = document.createElement('button');
+  var retrievedCity = localStorage.getItem('storedCity');
+  newCityBtn.textContent = retrievedCity[i];
+  leftCol.appendChild(newCityBtn);
+}
+}
+
+cityHistory();
 searchBtn.addEventListener("click", function() {
   getCity();
   apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey;
   console.log(city);
+  console.log(apiUrl);
+  cityHistory();
   apiCall();
+  
 });
 
 
 // // function getCurrentHistroy -- use local storage
 // // function createHistroy 
-// // function grabData -- grab temp, name -- request URL
 
 
 // // function fetchData(city) {
@@ -84,4 +101,3 @@ searchBtn.addEventListener("click", function() {
 // //     forecast.innerHTML = ""
 
 // //     fetch(requestUrl)
-
