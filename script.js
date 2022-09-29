@@ -51,10 +51,12 @@ fetch(apiUrl)
 
     })
   });
-console.log(weatherDays);
 
+console.log(weatherDays);
+console.log(weatherDays[0]);
 
 // grabbing the temp, wind, icon, date, humidity for the five days
+function weather() {
 for (var i = 0; i < weatherDays.length; i++) {
   forecastTemp.push(weatherDays[i].main.temp);
   forecastHumidity.push(weatherDays[i].main.humidity);
@@ -67,10 +69,11 @@ for (var i = 0; i < weatherDays.length; i++) {
   // var icon = weatherDays[i].weather[0].icon
   // console.log(forecastTemp);
 }
+}
 
 
 // Why is this showing up as undefined????!
-console.log(weatherDays[0]);
+// console.log(weatherDays[0]);
 
 // // console.log(forecastTemp);
 
