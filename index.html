@@ -5,23 +5,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
 <body>
-    <!-- <header>
-        <h1>Weather Dashboard</h1>
-    </header>
-    <section>
-        <div>
-            <h2>Search City</h2>
-            <input type="text" placeholder="City"></input>
-            <button>Search</button>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Weather dashboard column: -->
+            <div class="col-4"> 
+                <header>
+                    <h1>Weather Dashboard</h1>
+                </header>
+                <section>
+                    <div>
+                        <h2>Search City</h2>
+                        <input id="input-field" type="text" placeholder="City"></input>
+                        <button id="btn">Search</button>
+                    </div>
+                </section>
+            </div>
+            <!-- Current day and forecast column: -->
+            <div class="col-8">
+                <!-- Current day weather: -->
+                <div class="row" id="current-block">a,b,c</div>
+                <!-- Forecast weather: -->
+                <div class="row" id="forecast-block">1,2,3</div>
+            </div>
         </div>
-    </section> -->
+    </div>
+            
+   
+   
 
-    <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
+
+
+
+
+
+
+
+    <!-- <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
             <div class="col-12 col-md-4">
                 <header>
                      <h1>Weather Dashboard</h1>
@@ -36,25 +61,25 @@
             </div>
     </div>
 
-        <div class="col-12 col-md-9 p-3 text-light">
+        <div class="col-12 col-md-8">
             <h2>Showing results for <span id="result-text"></span></h2>
             <div id="result-content"></div>
           </div>
         </div>
 
-    </section>
+    </section> -->
 
-    <section>
+    <!-- <section>
         <div id="currentWeather"></div>
     </section>
 
     <section>
         <div id="forecast"></div>
-    </section>
+    </section> -->
 
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
 </body>
 
 </html>

@@ -1,0 +1,9 @@
+#current-block {
+    background-color: aqua;
+    height: 200px;
+}
+
+#forecast-block {
+    background-color: rgb(183, 74, 183);
+    height: 400px;
+}

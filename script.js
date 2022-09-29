@@ -1,14 +1,18 @@
 
 // Global variables:
-var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=Denver&units=imperial&appid=2af87cb904809765cbfcdd3689556288";
 const weatherDays = [];
+var city = "";
 let currDay = null
 var forecastTemp = [];
 var forecastWind = [];
 var forecastHumidity = [];
 var forecastIcon = [];
 var forecastDate = [];
-
+var searchBtn = document.getElementById("btn");
+var inputText = document.getElementById("input-field");
+var apiKey = "f30dc0b71f772a037a522282770190be";
+var apiUrl = "";
+function apiCall() {
 fetch(apiUrl)
   .then(function (response) {
     console.log(response)
@@ -24,16 +28,6 @@ fetch(apiUrl)
 
     let day2Temp = data.list[8].main.temp;
 
-    // ** put that info on the screen 
-    // reach into your html 
-    // grab the element you want to stick new data into
-    // const day1El =  document.querySelector or use document.getElementById
-    // replace the fake data w/ you data
-
-
-
-
-
     data.list.forEach(function (tsObj) {
 
       // Makes a moment date object for each record
@@ -48,12 +42,11 @@ fetch(apiUrl)
         weatherDays.push(tsObj)
         currDay = dateNum
       }
-
     })
+    weather();
+    console.log(forecastTemp);
   });
-
-console.log(weatherDays);
-console.log(weatherDays[0]);
+}
 
 // grabbing the temp, wind, icon, date, humidity for the five days
 function weather() {
@@ -63,43 +56,30 @@ for (var i = 0; i < weatherDays.length; i++) {
   forecastWind.push(weatherDays[i].wind.speed);
   forecastIcon.push(weatherDays[i].weather[0].icon);
   forecastDate.push(weatherDays[i].dt_txt);
-  // var wind = weatherDays[i].main.wind.speed;
-  // var humidity = weatherDays[i].main.humidity;
-  // var date = weatherDays[i].dt_txt;
-  // var icon = weatherDays[i].weather[0].icon
-  // console.log(forecastTemp);
 }
 }
 
 
-// Why is this showing up as undefined????!
-// console.log(weatherDays[0]);
 
-// // console.log(forecastTemp);
+// Gets the text input for the city:
+function getCity() {
+  city = inputText.value;
+};
 
-// // make variable to access index.html
-// // Var = input field
-
-// // var getWeather = button
-
-// // var containter = containter
-
-// // var forecast = 
-
-// // var currentDate = 
-// // moment().format('dddd, MMMM Do, YYYY')
+searchBtn.addEventListener("click", function() {
+  getCity();
+  apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey;
+  console.log(city);
+  apiCall();
+});
 
 
-
-// // function getCity
 // // function getCurrentHistroy -- use local storage
 // // function createHistroy 
 // // function grabData -- grab temp, name -- request URL
 
 
 // // function fetchData(city) {
-// //     var apiKey = "f30dc0b71f772a037a522282770190be"
-// //     var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey
 // //     container.innerHTML = ""
 // //     forecast.innerHTML = ""
 
